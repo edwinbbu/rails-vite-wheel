@@ -2,6 +2,7 @@
 
 ### Setup
 `bundle`
+
 `yarn install`
 
 ### Running project 
