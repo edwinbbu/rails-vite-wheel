@@ -2,6 +2,6 @@ import React from 'react';
 
 export const App = () => {
   return (
-    <h1>React with esbuild, hotwire and stimulus</h1>
+    <div className='text-5xl'>React with esbuild, hotwire and stimulus</div>
   )
 }
