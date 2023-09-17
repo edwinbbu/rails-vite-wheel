@@ -8,7 +8,14 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= vite_client_tag %>
+    <%= vite_typescript_tag 'index.tsx' %>
+    <!--
+      If using a TypeScript entrypoint file:
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
 
   <body>

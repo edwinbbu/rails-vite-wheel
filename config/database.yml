@@ -1,25 +1,30 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
+<% branch_name = `git symbolic-ref HEAD 2>/dev/null`.chomp.sub('refs/heads/', '') %>
+<% repository_name = `git rev-parse --show-toplevel`.split('/').last.strip %>
+
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+  password:
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: <%= "#{repository_name}_development" %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: <%= "#{repository_name}_test" %>
+
+heroku:
+  <<: *default
+  database: <%= "#{repository_name}_heroku" %>
+
+staging:
+  <<: *default
+  database: <%= "#{repository_name}_staging" %>
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: <%= "#{repository_name}_production" %>
+  password: <%= ENV['#{repository_name}_DATABASE_PASSWORD'] %>
