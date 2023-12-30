@@ -1,4 +1,6 @@
-# Rail + React with vite
+# Rails React Vite Wheel
+
+Starter kit for rails + react with vite setup. No webpacker anymore!!.
 
 ### Setup
 ```
